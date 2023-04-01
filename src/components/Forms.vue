@@ -17,11 +17,11 @@ export default {
     </div>
 
     <div class="form__footer">
-      <div class="form__group w-60">
+      <div class="form__group">
         <label for="expiration" class="form__label">Validade</label>
         <input id="expiration" class="form__field" name="expiration" placeholder="mm/aa" />
       </div>
-      <div class="form__group w-40">
+      <div class="form__group max-w-130">
         <label for="cvv" class="form__label">CVV</label>
         <input id="cvv" class="form__field" name="cvv" placeholder="***" />
       </div>
@@ -46,6 +46,7 @@ export default {
     margin-bottom: 4px;
   }
   &__field {
+    width: 100%;
     background-color: var(--gray-900);
     color: var(--gray-100);
     font-size: 16px;

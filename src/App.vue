@@ -2,13 +2,15 @@
 import Container from '@/components/Container.vue'
 import Forms from '@/components/Forms.vue'
 import Submit from '@/components/Submit.vue'
+import Card from '@/components/Card.vue'
 
 export default {
   name: 'App',
   components: {
     Container,
     Forms,
-    Submit
+    Submit,
+    Card
   },
   methods: {
     handleSubmit() {
@@ -23,6 +25,7 @@ export default {
     <div class="panel">
       <div class="panel__row">
         <Forms ref="form" />
+        <Card />
       </div>
       <Submit @click="handleSubmit">Adicionar cartão</Submit>
     </div>
