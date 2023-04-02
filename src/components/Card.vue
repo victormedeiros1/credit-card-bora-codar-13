@@ -7,6 +7,9 @@ export default {
   components: {
     Visa,
     Signal
+  },
+  props: {
+    card: { type: Object }
   }
 }
 </script>
@@ -18,14 +21,11 @@ export default {
       <Signal />
     </div>
     <div class="card__body">
-      <span class="card__number">4716</span>
-      <span class="card__number">8039</span>
-      <span class="card__number">02**</span>
-      <span class="card__number">****</span>
+      <span>{{ card.number || '**** **** **** ****' }}</span>
     </div>
     <div class="card__footer">
-      <span>Seu nome aqui</span>
-      <span>**/**</span>
+      <span class="opacity-5">{{ card.name || 'Seu nome aqui' }}</span>
+      <span class="opacity-5">{{ card.exporation || '**/**' }}</span>
     </div>
   </div>
 </template>
@@ -35,8 +35,7 @@ export default {
   background-image: url('@/assets/images/card-bg.png');
   background-size: cover;
   background-repeat: no-repeat;
-  width: 100%;
-  max-width: 280px;
+  width: 280px;
   height: fit-content;
   color: var(--gray-050);
   border: 1px solid var(--gray-700);
@@ -64,6 +63,7 @@ export default {
   &__footer {
     display: flex;
     justify-content: space-between;
+    color: var(--gray-050);
     font-size: 14px;
     line-height: 16px;
   }

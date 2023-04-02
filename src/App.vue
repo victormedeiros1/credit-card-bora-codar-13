@@ -1,22 +1,29 @@
 <script>
 import Container from '@/components/Container.vue'
-import Forms from '@/components/Forms.vue'
 import Submit from '@/components/Submit.vue'
 import Card from '@/components/Card.vue'
 import Shield from '@/components/icons/Shield.vue'
+import { mask } from 'vue-the-mask'
 
 export default {
   name: 'App',
   components: {
     Container,
-    Forms,
     Submit,
     Card,
     Shield
   },
-  methods: {
-    handleSubmit() {
-      // const { number, name, expiration, cvv } = this.$refs.form.$el.elements
+  directives: {
+    mask
+  },
+  data() {
+    return {
+      card: {
+        number: '',
+        name: '',
+        expiration: '',
+        cvv: ''
+      }
     }
   }
 }
@@ -26,16 +33,69 @@ export default {
   <Container>
     <div class="panel">
       <div class="panel__row">
-        <Forms ref="form" />
+        <form class="form">
+          <div class="form__group">
+            <label for="number" class="form__label">Número do cartão</label>
+            <input
+              id="number"
+              class="form__field"
+              name="number"
+              placeholder="**** **** **** ****"
+              v-model="card.number"
+              v-mask="'#### #### #### ####'"
+            />
+          </div>
+
+          <div class="form__group">
+            <label id="name" class="form__label">Nome do titular</label>
+            <input
+              for="name"
+              class="form__field"
+              type="text"
+              name="name"
+              placeholder="Nome como está no cartão"
+              v-model="card.name"
+              maxLength="30"
+              v-mask="'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+            />
+          </div>
+
+          <div class="form__footer">
+            <div class="form__group">
+              <label for="expiration" class="form__label">Validade</label>
+              <input
+                id="expiration"
+                class="form__field"
+                type="text"
+                name="expiration"
+                placeholder="mm/aa"
+                v-model="card.expiration"
+                v-mask="'##!/##'"
+              />
+            </div>
+            <div class="form__group max-w-130">
+              <label for="cvv" class="form__label">CVV</label>
+              <input
+                id="cvv"
+                class="form__field"
+                type="text"
+                name="cvv"
+                placeholder="***"
+                v-model="card.cvv"
+                v-mask="'###'"
+              />
+            </div>
+          </div>
+        </form>
         <div class="panel__card-wrapper">
-          <Card />
+          <Card :card="card" />
           <div class="panel__card-footer">
             <Shield />
             <span>Seus dados estão seguros</span>
           </div>
         </div>
       </div>
-      <Submit @click="handleSubmit">Adicionar cartão</Submit>
+      <Submit>Adicionar cartão</Submit>
     </div>
   </Container>
 </template>
@@ -63,6 +123,36 @@ export default {
     justify-content: center;
     gap: 8px;
     color: var(--gray-200);
+  }
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+  }
+  &__label {
+    color: var(--gray-200);
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 4px;
+  }
+  &__field {
+    width: 100%;
+    background-color: var(--gray-900);
+    color: var(--gray-100);
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 4px;
+    border: 1px solid var(--gray-700);
+    padding: 12px;
+  }
+  &__footer {
+    display: flex;
+    gap: 24px;
   }
 }
 </style>
