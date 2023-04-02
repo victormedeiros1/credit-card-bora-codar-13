@@ -43,7 +43,7 @@ export default {
 
   border-radius: 16px;
   padding: 16px 24px 24px 24px;
-  margin: 16px 0;
+  margin: 16px 0 32px 0;
 
   &__header {
     display: flex;

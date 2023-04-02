@@ -3,6 +3,7 @@ import Container from '@/components/Container.vue'
 import Forms from '@/components/Forms.vue'
 import Submit from '@/components/Submit.vue'
 import Card from '@/components/Card.vue'
+import Shield from '@/components/icons/Shield.vue'
 
 export default {
   name: 'App',
@@ -10,7 +11,8 @@ export default {
     Container,
     Forms,
     Submit,
-    Card
+    Card,
+    Shield
   },
   methods: {
     handleSubmit() {
@@ -25,7 +27,13 @@ export default {
     <div class="panel">
       <div class="panel__row">
         <Forms ref="form" />
-        <Card />
+        <div class="panel__card-wrapper">
+          <Card />
+          <div class="panel__card-footer">
+            <Shield />
+            <span>Seus dados estão seguros</span>
+          </div>
+        </div>
       </div>
       <Submit @click="handleSubmit">Adicionar cartão</Submit>
     </div>
@@ -44,6 +52,17 @@ export default {
   &__row {
     display: flex;
     gap: 64px;
+  }
+
+  &__card-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  &__card-footer {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    color: var(--gray-200);
   }
 }
 </style>
