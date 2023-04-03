@@ -10,20 +10,6 @@ export default {
   },
   props: {
     card: { type: Object }
-  },
-  watch: {
-    'card.cvv'() {
-      const cards = this.$refs.cards
-      const cardBack = this.$refs['card-back']
-
-      if (cards.classList.value.includes('rotate') && this.card.cvv.length === 0) {
-        cards.classList.remove('rotate')
-        setTimeout(() => cardBack.classList.remove('z-index-1'), 150)
-      } else {
-        cards.classList.add('rotate')
-        setTimeout(() => cardBack.classList.add('z-index-1'), 150)
-      }
-    }
   }
 }
 </script>

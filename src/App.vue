@@ -13,9 +13,6 @@ export default {
     Card,
     Shield
   },
-  directives: {
-    mask
-  },
   data() {
     return {
       card: {
@@ -23,6 +20,23 @@ export default {
         name: '',
         expiration: '',
         cvv: ''
+      }
+    }
+  },
+  directives: {
+    mask
+  },
+  methods: {
+    rotateCard() {
+      const cards = document.querySelector('.cards')
+      const cardBack = document.querySelector('.card--back')
+
+      if (cards.classList.value.includes('rotate') && this.card.cvv.length === 0) {
+        cards.classList.remove('rotate')
+        setTimeout(() => cardBack.classList.remove('z-index-1'), 150)
+      } else {
+        cards.classList.add('rotate')
+        setTimeout(() => cardBack.classList.add('z-index-1'), 150)
       }
     }
   }
@@ -82,6 +96,8 @@ export default {
                 placeholder="***"
                 v-model="card.cvv"
                 v-mask="'###'"
+                @focusin="rotateCard"
+                @focusout="rotateCard"
               />
             </div>
           </div>
