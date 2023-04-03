@@ -55,8 +55,7 @@ export default {
               name="name"
               placeholder="Nome como está no cartão"
               v-model="card.name"
-              maxLength="30"
-              v-mask="'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              maxLength="26"
             />
           </div>
 
@@ -123,7 +122,7 @@ export default {
     justify-content: center;
     color: var(--gray-200);
     gap: 8px;
-    margin-top: 48px;
+    margin: auto 0 16px 0;
   }
 }
 .form {

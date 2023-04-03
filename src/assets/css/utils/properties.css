@@ -10,3 +10,7 @@
 .z-index-1 {
   z-index: 1;
 }
+
+.rotate {
+  transform: rotateY(180deg);
+}
