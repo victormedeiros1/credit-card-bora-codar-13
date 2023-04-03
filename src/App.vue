@@ -121,8 +121,9 @@ export default {
   &__card-footer {
     display: flex;
     justify-content: center;
-    gap: 8px;
     color: var(--gray-200);
+    gap: 8px;
+    margin-top: 48px;
   }
 }
 .form {
