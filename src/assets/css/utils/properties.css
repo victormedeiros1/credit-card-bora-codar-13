@@ -10,7 +10,21 @@
 .z-index-1 {
   z-index: 1;
 }
-
 .rotate {
   transform: rotateY(180deg);
+}
+.d-desktop {
+  display: initial;
+}
+.d-mobile {
+  display: none;
+}
+
+@media (max-width: 576px) {
+  .d-desktop {
+    display: none;
+  }
+  .d-mobile {
+    display: initial;
+  }
 }

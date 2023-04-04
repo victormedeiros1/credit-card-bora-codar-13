@@ -47,7 +47,6 @@ export default {
   transition: 0.3s linear;
 }
 .card {
-  position: absolute;
   background-image: url('@/assets/images/card-bg.jpg');
   background-size: 110%;
   background-position-x: -10px;
@@ -60,10 +59,12 @@ export default {
   margin-top: 16px;
 
   &--front {
+    position: relative;
     padding: 16px 24px 24px 24px;
   }
 
   &--back {
+    position: absolute;
     transform: rotateY(180deg);
   }
 

@@ -1,8 +1,8 @@
 <script>
 import Container from '@/components/Container.vue'
 import Submit from '@/components/Submit.vue'
+import Security from '@/components/Security.vue'
 import Card from '@/components/Card.vue'
-import Shield from '@/components/icons/Shield.vue'
 import { mask } from 'vue-the-mask'
 
 export default {
@@ -11,7 +11,7 @@ export default {
     Container,
     Submit,
     Card,
-    Shield
+    Security
   },
   data() {
     return {
@@ -101,12 +101,14 @@ export default {
               />
             </div>
           </div>
+          <div class="d-mobile">
+            <Security />
+          </div>
         </form>
         <div class="panel__card-wrapper">
           <Card :card="card" />
-          <div class="panel__card-footer">
-            <Shield />
-            <span>Seus dados estão seguros</span>
+          <div class="d-desktop">
+            <Security />
           </div>
         </div>
       </div>
@@ -127,18 +129,17 @@ export default {
   &__row {
     display: flex;
     gap: 64px;
+
+    @media (max-width: 576px) {
+      flex-direction: column-reverse;
+      gap: 48px;
+    }
   }
 
   &__card-wrapper {
     display: flex;
     flex-direction: column;
-  }
-  &__card-footer {
-    display: flex;
-    justify-content: center;
-    color: var(--gray-200);
-    gap: 8px;
-    margin: auto 0 16px 0;
+    align-items: center;
   }
 }
 .form {
